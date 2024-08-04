@@ -16,6 +16,10 @@ jobs:
       CCACHE_HARDLINK: "true"
     steps:
     - uses: actions/checkout@v4
+    - name: Install Python 2
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python2 python2-pip
     - name: Prepare Configuration
       run: |
         CONFIG_ENV=$(cat config.env | grep -w "CONFIG_ENV" | head -n 1 | cut -d "=" -f 2)
